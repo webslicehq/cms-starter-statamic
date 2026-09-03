@@ -1,0 +1,38 @@
+# Webslice website settings, versioned alongside the code.
+#
+# Anything set here overrides the matching setting in the Webslice Console, and
+# takes effect on the next deploy. Settings you leave out keep whatever the
+# Console has. Git deploys only - this file is ignored for file and SFTP deploys.
+#
+# https://docs.webslice.com/serverless/settings-toml/
+
+[deploy.commands]
+build = ".webslice/build.sh"
+release = ".webslice/release.sh"
+
+# `publish` is deliberately unset: it deploys a single directory, and Statamic
+# needs the whole tree. public/ is the document root but reads content/,
+# resources/ and vendor/ from above it.
+
+# ---------------------------------------------------------------------------
+# Live deploy strategy only
+# ---------------------------------------------------------------------------
+# Webslice already clears bootstrap/cache/*.php and storage/statamic/static
+# after each live deploy, but not public/static, whose location is yours to
+# choose. The release script clears it too; this covers a release that fails
+# partway. Does nothing on versioned deploys.
+[deploy.live]
+clear_paths = ["public/static"]
+
+# ---------------------------------------------------------------------------
+# Domain redirects
+# ---------------------------------------------------------------------------
+# Uncomment once your domains are verified. While this section exists it is the
+# only source of truth for CDN redirects and the Console's settings are locked,
+# so remove it entirely to manage redirects there again.
+#
+# [cdn.redirects]
+# "www.example.com" = { to = "example.com", type = 301 }
+#
+# Silently drops connections to the default edge domain once you have your own:
+# "pgba4vw8p0vocg6s.onwebslice.com" = { type = 444 }

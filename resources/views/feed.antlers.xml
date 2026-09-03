@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ site:name }}</title>
+        <link>{{ site:permalink }}</link>
+        <description>{{ site_settings:description }}</description>
+        <language>{{ site:short_locale }}</language>
+        <atom:link href="{{ site:permalink }}/feed.xml" rel="self" type="application/rss+xml" />
+{{ collection:blog limit="20" }}        <item>
+            <title>{{ title | entities }}</title>
+            <link>{{ permalink }}</link>
+            <guid isPermaLink="true">{{ permalink }}</guid>
+            <pubDate>{{ date format="r" }}</pubDate>
+            <description>{{ intro | entities }}</description>
+        </item>
+{{ /collection:blog }}    </channel>
+</rss>

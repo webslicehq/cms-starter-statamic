@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{{ collection:pages }}{{ unless hide_from_search }}    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+    </url>
+{{ /unless }}{{ /collection:pages }}{{ collection:blog }}    <url>
+        <loc>{{ permalink }}</loc>
+        <lastmod>{{ updated_at format="Y-m-d" }}</lastmod>
+    </url>
+{{ /collection:blog }}</urlset>

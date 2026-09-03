@@ -1,0 +1,30 @@
+title: 'Site settings'
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: description
+            field:
+              type: textarea
+              display: 'Site description'
+              instructions: 'The fallback meta description for any page that does not set its own, and the description of the RSS feed.'
+              character_limit: 200
+          -
+            handle: email
+            field:
+              type: text
+              display: 'Contact email'
+              input_type: email
+          -
+            handle: footer_text
+            field:
+              type: markdown
+              display: 'Footer text'
+              instructions: 'Shown in the footer. Markdown, so it can hold links.'
+              buttons:
+                - bold
+                - italic
+                - link

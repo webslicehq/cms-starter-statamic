@@ -1,0 +1,18 @@
+title: Contact
+
+# Hidden field that bots fill in. Submissions carrying it are dropped.
+honeypot: website_url
+
+# One file per submission. The provider points that directory at
+# /mnt/data/website/shared/form-submissions so they survive deploys.
+store: true
+
+# Uncomment to email submissions as well as storing them. Configure a mail
+# service in the Console first: the default mailer only writes to the log.
+#
+# email:
+#   -
+#     to: you@example.com
+#     from: '{{ name }} <{{ email }}>'
+#     reply_to: '{{ email }}'
+#     subject: 'Website enquiry from {{ name }}'

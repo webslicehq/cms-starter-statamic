@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@source "../views";
+@source "../../content";
+
+@theme {
+    --color-ink: oklch(0.22 0.01 260);
+    --color-ink-muted: oklch(0.52 0.01 260);
+    --color-paper: oklch(0.99 0.002 260);
+    --color-line: oklch(0.91 0.004 260);
+    --color-accent: oklch(0.55 0.16 255);
+}
+
+@media (prefers-color-scheme: dark) {
+    @theme {
+        --color-ink: oklch(0.93 0.004 260);
+        --color-ink-muted: oklch(0.68 0.008 260);
+        --color-paper: oklch(0.19 0.008 260);
+        --color-line: oklch(0.29 0.008 260);
+        --color-accent: oklch(0.74 0.13 255);
+    }
+}
+
+/*
+ * Styling for rendered markdown. This is a deliberately small stand in for the
+ * Tailwind typography plugin: a starter that needs one more dependency before
+ * a paragraph looks right is a worse starter. Swap it for @tailwindcss/typography
+ * the moment you outgrow it.
+ */
+@layer components {
+    .content {
+        line-height: 1.7;
+    }
+
+    .content > * + * {
+        margin-block-start: 1.25em;
+    }
+
+    .content h2,
+    .content h3 {
+        color: var(--color-ink);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+        margin-block-start: 2em;
+    }
+
+    .content h2 {
+        font-size: 1.35rem;
+    }
+
+    .content h3 {
+        font-size: 1.1rem;
+    }
+
+    .content a {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .content strong {
+        color: var(--color-ink);
+        font-weight: 600;
+    }
+
+    .content ul,
+    .content ol {
+        padding-inline-start: 1.5em;
+    }
+
+    .content ul {
+        list-style: disc;
+    }
+
+    .content ol {
+        list-style: decimal;
+    }
+
+    .content li + li {
+        margin-block-start: 0.4em;
+    }
+
+    .content code {
+        background: color-mix(in oklch, var(--color-line) 60%, transparent);
+        border-radius: 0.25rem;
+        font-size: 0.9em;
+        padding: 0.15em 0.35em;
+    }
+
+    .content pre {
+        background: color-mix(in oklch, var(--color-line) 60%, transparent);
+        border-radius: 0.5rem;
+        overflow-x: auto;
+        padding: 1rem;
+    }
+
+    .content pre code {
+        background: none;
+        padding: 0;
+    }
+}

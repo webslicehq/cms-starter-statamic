@@ -1,0 +1,57 @@
+<h1 class="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{{ title }}</h1>
+
+<div class="content mt-6 text-ink-muted">{{ content }}</div>
+
+{{# Excluded from static caching in config/statamic/static_caching.php: a
+    cached page carries an expired CSRF token and every submission fails.
+
+    Fields are written by hand rather than looped, so the markup is yours. A
+    field added to resources/blueprints/forms/contact.yaml is validated and
+    stored, but needs its input adding here too. #}}
+{{ form:contact class="mt-10 grid gap-6" }}
+    {{ if success }}
+        <p class="rounded-lg border border-line bg-line/40 px-4 py-3 text-sm">
+            Thanks, your message has been received.
+        </p>
+    {{ /if }}
+
+    <div class="grid gap-2">
+        <label for="name" class="text-sm font-medium">Name</label>
+        <input
+            type="text" id="name" name="name" value="{{ old:name }}" required
+            class="rounded-lg border border-line bg-transparent px-3 py-2 outline-offset-2 focus:outline-2 focus:outline-accent"
+        >
+        {{ if error:name }}<p class="text-sm text-red-600 dark:text-red-400">{{ error:name }}</p>{{ /if }}
+    </div>
+
+    <div class="grid gap-2">
+        <label for="email" class="text-sm font-medium">Email</label>
+        <input
+            type="email" id="email" name="email" value="{{ old:email }}" required
+            class="rounded-lg border border-line bg-transparent px-3 py-2 outline-offset-2 focus:outline-2 focus:outline-accent"
+        >
+        {{ if error:email }}<p class="text-sm text-red-600 dark:text-red-400">{{ error:email }}</p>{{ /if }}
+    </div>
+
+    <div class="grid gap-2">
+        <label for="message" class="text-sm font-medium">Message</label>
+        <textarea
+            id="message" name="message" rows="6" required
+            class="rounded-lg border border-line bg-transparent px-3 py-2 outline-offset-2 focus:outline-2 focus:outline-accent"
+        >{{ old:message }}</textarea>
+        {{ if error:message }}<p class="text-sm text-red-600 dark:text-red-400">{{ error:message }}</p>{{ /if }}
+    </div>
+
+    {{# Honeypot. Hidden from people and screen readers; a submission that
+        arrives with it filled is dropped. Name set in resources/forms/contact.yaml. #}}
+    <div class="hidden" aria-hidden="true">
+        <label for="{{ honeypot }}">Leave this field empty</label>
+        <input type="text" id="{{ honeypot }}" name="{{ honeypot }}" value="" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div>
+        <button type="submit" class="rounded-lg bg-ink px-4 py-2.5 text-sm font-medium text-paper">
+            Send message
+        </button>
+    </div>
+{{ /form:contact }}

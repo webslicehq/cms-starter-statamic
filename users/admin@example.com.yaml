@@ -1,0 +1,10 @@
+# Default Control Panel user, so a fresh clone can log in at /cp straight away.
+#
+# The password is `changeme123` and it is published in this repository's README.
+# Change it, or delete this user and make your own, before the site is reachable
+# by anyone else. Editing this user in the Control Panel rewrites this file and
+# will drop these comments.
+name: 'Starter Admin'
+super: true
+id: be0b84f9-75c2-4416-9d3e-e926d1596291
+password_hash: $2y$12$YS5xCOhscQFK4XtwHWM6V.dufpNzp8k8TOW4B/iCuJELxDfU5tFwS

@@ -1,0 +1,33 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: content
+            field:
+              type: markdown
+              display: Content
+              localizable: true
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta description'
+              instructions: 'Used in the page description and when the page is shared. Around 150 characters. Falls back to the site description if left empty.'
+              character_limit: 200
+              localizable: true
+          -
+            handle: hide_from_search
+            field:
+              type: toggle
+              display: 'Hide from search engines'
+              instructions: 'Leaves the page out of sitemap.xml and asks search engines not to index it.'
+              default: false

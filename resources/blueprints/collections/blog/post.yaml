@@ -1,0 +1,42 @@
+title: Post
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: intro
+            field:
+              type: textarea
+              display: Intro
+              instructions: 'One or two sentences. Shown on the blog index, in the RSS feed, and as the meta description when the SEO tab is empty.'
+              character_limit: 300
+              validate:
+                - required
+          -
+            handle: content
+            field:
+              type: markdown
+              display: Content
+              localizable: true
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              max_items: 1
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            handle: meta_description
+            field:
+              type: textarea
+              display: 'Meta description'
+              instructions: 'Overrides the intro when the post is shared or listed by a search engine.'
+              character_limit: 200
+              localizable: true

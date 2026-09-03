@@ -1,0 +1,15 @@
+title: Blog
+date: true
+sort_dir: desc
+route: '{mount}/{slug}'
+mount: cdcc5630-e678-4eb9-88c0-4f0ca4522050
+template: blog/show
+default_status: published
+date_behavior:
+  past: public
+  future: private
+preview_targets:
+  -
+    label: Entry
+    url: '{permalink}'
+    refresh: true

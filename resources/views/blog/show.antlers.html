@@ -1,0 +1,21 @@
+<article>
+    <p class="text-sm text-ink-muted">
+        {{# Hardcoded because Antlers reads `collection:` as the collection tag,
+            so an entry cannot reach its own mounted page. Change it alongside
+            the slug of content/collections/pages/blog.md. #}}
+        <a href="/blog" class="underline-offset-4 hover:underline">Blog</a>
+    </p>
+
+    <h1 class="mt-4 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{{ title }}</h1>
+
+    <p class="mt-4 text-lg text-pretty text-ink-muted">{{ intro }}</p>
+
+    <p class="mt-4 text-sm text-ink-muted">
+        <time datetime="{{ date format='Y-m-d' }}">{{ date format='j F Y' }}</time>
+        {{ author }}<span aria-hidden="true"> &middot; </span>{{ name ?? email }}{{ /author }}
+    </p>
+
+    <div class="content mt-10 text-ink-muted">
+        {{ content }}
+    </div>
+</article>

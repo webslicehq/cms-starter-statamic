@@ -1,0 +1,42 @@
+<h1 class="text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{{ title }}</h1>
+
+{{ if content }}
+    <div class="content mt-6 text-ink-muted">{{ content }}</div>
+{{ /if }}
+
+{{# Static caching ignores query strings, which would serve page 1 for every
+    page, so `page` is listed under allowed_query_strings in
+    config/statamic/static_caching.php. #}}
+<ul class="mt-10 divide-y divide-line border-y border-line">
+    {{ collection:blog paginate="10" as="posts" }}
+        {{ posts }}
+            <li class="py-6">
+                <a href="{{ url }}" class="group block">
+                    <h2 class="text-lg font-medium tracking-tight text-balance group-hover:underline group-hover:underline-offset-4">{{ title }}</h2>
+                    <p class="mt-2 text-pretty text-ink-muted">{{ intro }}</p>
+                    <time class="mt-3 block text-sm text-ink-muted" datetime="{{ date format='Y-m-d' }}">{{ date format='j F Y' }}</time>
+                </a>
+            </li>
+        {{ /posts }}
+
+        {{ if no_results }}
+            <li class="py-6 text-ink-muted">No posts yet.</li>
+        {{ /if }}
+
+        {{ paginate }}
+            {{ if total_pages > 1 }}
+                <li class="flex justify-between py-6 text-sm">
+                    {{ if prev_page }}
+                        <a href="{{ prev_page }}" class="underline underline-offset-4">Newer posts</a>
+                    {{ else }}
+                        <span></span>
+                    {{ /if }}
+
+                    {{ if next_page }}
+                        <a href="{{ next_page }}" class="underline underline-offset-4">Older posts</a>
+                    {{ /if }}
+                </li>
+            {{ /if }}
+        {{ /paginate }}
+    {{ /collection:blog }}
+</ul>

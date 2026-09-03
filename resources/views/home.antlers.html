@@ -1,0 +1,21 @@
+<div class="content text-lg text-ink-muted">
+    <h1 class="text-4xl font-semibold tracking-tight text-balance text-ink sm:text-5xl">{{ title }}</h1>
+
+    {{ content }}
+</div>
+
+<section class="mt-14" aria-labelledby="latest">
+    <h2 id="latest" class="text-sm font-medium tracking-wide text-ink-muted uppercase">Latest posts</h2>
+
+    <ul class="mt-5 divide-y divide-line border-y border-line">
+        {{ collection:blog limit="3" }}
+            <li class="py-5">
+                <a href="{{ url }}" class="group block">
+                    <h3 class="font-medium tracking-tight text-balance group-hover:underline group-hover:underline-offset-4">{{ title }}</h3>
+                    <p class="mt-1.5 text-sm text-pretty text-ink-muted">{{ intro }}</p>
+                    <time class="mt-2 block text-xs text-ink-muted" datetime="{{ date format='Y-m-d' }}">{{ date format='j F Y' }}</time>
+                </a>
+            </li>
+        {{ /collection:blog }}
+    </ul>
+</section>
